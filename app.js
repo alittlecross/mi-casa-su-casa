@@ -29,7 +29,7 @@ const casaApp = configure(app, {
 
 const nunjucks = app.get('nunjucksEnv');
 
-nunjucks.addFilter('monthAsText', require('./lib/month-as-text'));
+nunjucks.addFilter('countriesReviewBlock', require('./lib/countries-review-block'));
 
 require('./routes/index.js')(casaApp.router);
 
