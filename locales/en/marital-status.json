@@ -1,0 +1,31 @@
+{
+  "pageTitle": "Marital status",
+  "h1": "Marital status",
+  "fields": {
+    "maritalStatus": {
+      "items": {
+        "neverBeenMarried": {
+          "label": "Never been married"
+        },
+        "married": {
+          "label": "Married"
+        },
+        "civilPartnership": {
+          "label": "Civil partnership"
+        },
+        "widowed": {
+          "label": "Widowed"
+        },
+        "divorced": {
+          "label": "Divorced"
+        },
+        "dissolvedCivilPartnership": {
+          "label": "Dissolved civil partnership"
+        }
+      },
+      "errors": {
+        "empty": "Please make a selection"
+      }
+    }
+  }
+}

@@ -1,0 +1,47 @@
+{% from "components/summary-list/macro.njk" import govukSummaryList %}
+
+{% set data = journeyContext["contact-details"] %}
+
+{% set html = "" %}
+
+{% for item in data.phone %}
+  {% set html = html + t("contact-details:reviewBlock.values." + item) + ": " + data[item] + "<br>" %}
+{% endfor %}
+
+{% if data.email %}
+  {% set html = html + data.email + "<br>" %}
+{% endif %}
+
+{% if data.alternative === "yes" %}
+  {% set comma = joiner() %}
+  {% set html = html + t("alternative:reviewBlock.values.alternative") + ":" %}
+  {% for item in journeyContext["alternative"].alternative %}
+    {% set html = html + comma() + " " + t("alternative:reviewBlock.values." + item) %}
+  {% endfor %}
+{% endif %}
+
+{% block reviewBlock %}
+  {{ govukSummaryList({
+    classes: "govuk-!-margin-bottom-0",
+    rows: [
+      {
+        key: {
+          text: t("contact-details:reviewBlock.key")
+        },
+        value: {
+          html: html
+        },
+        actions: {
+          items: [
+            {
+              href: waypointEditUrl + "#f-phone",
+              text: t('review:block.changeLink'),
+              visuallyHiddenText: t("contact-details:reviewBlock.key"),
+              classes: 'govuk-link--no-visited-state'
+            }
+          ]
+        }
+      }
+    ]
+  }) }}
+{% endblock %}

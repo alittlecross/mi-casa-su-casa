@@ -1,0 +1,22 @@
+{
+  "pageTitle": "Claim date",
+  "h1": "Does the claimant want their State Pension from the earliest possible date?",
+  "inset": "The earliest date they can claim their State Pension is ${earliestDate}",
+  "fields": {
+    "acceptEarliestDate": {
+      "errors": {
+        "empty": "Please make a selection"
+      }
+    },
+    "newClaimDate": {
+      "errors": {
+        "empty": "Please enter a date",
+        "invalid": "Enter a valid date",
+        "tooEarly": "Enter a date after the earliest claim date"
+      }
+    }
+  },
+  "reviewBlock": {
+    "key": "State Pension claim date"
+  }
+}

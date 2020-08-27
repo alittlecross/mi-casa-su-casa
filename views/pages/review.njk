@@ -1,0 +1,52 @@
+{% extends "casa/layouts/journey.njk" %}
+
+{% from "components/button/macro.njk" import govukButton %}
+
+{% set name = journeyContext["found"].name %}
+
+{% set nameFormatted = name.firstName + " " + name.lastName %}
+
+{% block beforeContent %}
+  {% if casa.phase == "alpha" %}
+    {% include "casa/partials/phase_banner_alpha.njk" %}
+  {% elif casa.phase == "beta" %}
+    {% include "casa/partials/phase_banner_beta.njk" %}
+  {% endif %}
+
+  <h4 class="govuk-heading-s" style="margin-top: 20px">{{ nameFormatted | upper }}</h4>
+
+  <hr class="govuk-section-break govuk-section-break--visible">
+{% endblock %}
+
+{% block casaPageTitle %}
+  {{ t("review:pageTitle") }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      {{ govukBackLink({
+        text: t("common:back"),
+        href: casa.journeyPreviousUrl
+      }) }}
+
+      <h1 class="govuk-heading-xl">{{ t("review:h1") }}</h1>
+
+      <form action="{{ casa.mountUrl }}submit" method="post">
+        <input type="hidden" name="_csrf" value="{{ casa.csrfToken }}" />
+        <input type="hidden" name="reviewed" value="true" />
+
+        {% for block in reviewBlocks %}
+          {% set waypointId = block.waypointId %}
+          {% set waypointEditUrl = block.waypointEditUrl %}
+          {% include block.reviewBlockView ignore missing %}
+        {% endfor %}
+
+        {{ govukButton({
+          text: t("common:form.buttons.submit.label"),
+          preventDoubleClick: true
+        }) }}
+      </form>
+    </div>
+  </div>
+{% endblock %}

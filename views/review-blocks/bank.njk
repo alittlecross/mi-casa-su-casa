@@ -1,0 +1,37 @@
+{% from "components/summary-list/macro.njk" import govukSummaryList %}
+
+{% set data = journeyContext["bank"] %}
+
+{% set html %}
+  {{ data.name }}<br>
+  {{ data.sortCode }}<br>
+  {{ data.accountNumber }}<br>
+  {% if data.rollOrReference %}
+    {{ data.rollOrReference }}<br>
+  {% endif %}
+{% endset %}
+
+{% block reviewBlock %}
+  {{ govukSummaryList({
+    rows: [
+      {
+        key: {
+          text: t("bank:reviewBlock.key")
+        },
+        value: {
+          html: html
+        },
+        actions: {
+          items: [
+            {
+              href: waypointEditUrl + "#f-name",
+              text: t('review:block.changeLink'),
+              visuallyHiddenText: t("bank:reviewBlock.key"),
+              classes: 'govuk-link--no-visited-state'
+            }
+          ]
+        }
+      }
+    ]
+  }) }}
+{% endblock %}

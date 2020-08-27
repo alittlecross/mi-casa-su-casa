@@ -1,0 +1,61 @@
+{% from "components/summary-list/macro.njk" import govukSummaryList %}
+
+{% set data = [journeyContext["country-1"], journeyContext["country-2"], journeyContext["country-3"], journeyContext["country-4"]] %}
+{% set rows = [] %}
+
+{% for item in data %}
+  {% if item %}
+    {% set classes = "govuk-summary-list__row--no-border" %}
+
+    {% set text = t("lived-worked:reviewBlock.key") if not rows.length %}
+
+    {% set html = item.country + "<br>" %}
+
+    {% if item.lived === "yes" %}
+      {% set html = html + t("lived-worked:reviewBlock.values.lived") + ": " + item.livedFrom.mm | monthAsText + " " + item.livedFrom.yyyy + " to " + item.livedTo.mm | monthAsText + " " + item.livedTo.yyyy + "<br>" %}
+    {% endif %}
+
+    {% if item.worked === "yes" %}
+      {% set html = html + t("lived-worked:reviewBlock.values.worked") + ": " + item.workedFrom.mm | monthAsText + " " + item.workedFrom.yyyy + " to " + item.workedTo.mm | monthAsText + " " + item.workedTo.yyyy + "<br>" %}
+    {% endif %}
+
+    {% if item.nino %}
+      {% set html = html + item.nino %}
+    {% endif %}
+
+    {{ rows.push(
+      {
+        classes: classes,
+        key: {
+          text: text
+        },
+        value: {
+          html: html
+        },
+        actions: {
+          items: [
+            {
+              href: waypointEditUrl + "#f-country",
+              text: t("review:block.changeLink"),
+              visuallyHiddenText: t("lived-worked:reviewBlock.key"),
+              classes: "govuk-link--no-visited-state"
+            }
+          ]
+        }
+      }
+    ) }}
+  {% endif %}
+{% endfor %}
+
+{# {% if rows.length === 4 %}
+  {% set rows[3].value.html = rows[3].value.html + "<br><br>" + t("lived-worked:reviewBlock.values.more") + ": " + journeyContext["lived-worked-5"].outside | title %}
+{% endif %}
+
+{% set rows[rows.length - 1].classes = "" %} #}
+
+{% block reviewBlock %}
+  {{ govukSummaryList({
+    classes: "govuk-!-margin-bottom-0",
+    rows: rows
+  }) }}
+{% endblock %}

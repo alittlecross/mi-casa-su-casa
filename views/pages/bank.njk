@@ -1,0 +1,50 @@
+{% extends "layouts/journey.njk" %}
+
+{% from "casa/components/input/macro.njk" import casaGovukInput with context %}
+
+{% block casaPageTitle %}
+  {{ t("bank:pageTitle") }}
+{% endblock %}
+
+{% block journey_form %}
+  <h1 class="govuk-heading-xl">{{ t("bank:h1") }}</h1>
+
+  {{ casaGovukInput({
+    label: {
+      text: t("bank:fields.name.label")
+    },
+    name: "name",
+    value: formData.name,
+    casaErrors: formErrors
+  }) }}
+
+  {{ casaGovukInput({
+    label: {
+      text: t("bank:fields.sortCode.label")
+    },
+    name: "sortCode",
+    value: formData.sortCode,
+    classes: "govuk-input--width-5",
+    casaErrors: formErrors
+  }) }}
+
+  {{ casaGovukInput({
+    label: {
+      text: t("bank:fields.accountNumber.label")
+    },
+    name: "accountNumber",
+    value: formData.accountNumber,
+    classes: "govuk-input--width-10",
+    casaErrors: formErrors
+  }) }}
+
+  {{ casaGovukInput({
+    label: {
+      text: t("bank:fields.rollOrReference.label")
+    },
+    name: "rollOrReference",
+    value: formData.rollOrReference,
+    classes: "govuk-input--width-10",
+    casaErrors: formErrors
+  }) }}
+{% endblock %}

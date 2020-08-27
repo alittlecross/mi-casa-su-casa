@@ -1,0 +1,28 @@
+{% extends "layouts/journey.njk" %}
+
+{% from "casa/components/radios/macro.njk" import casaGovukRadios with context %}
+
+{% block casaPageTitle %}
+  {{ t("lived-worked:pageTitle") }}
+{% endblock %}
+
+{% block journey_form %}
+  <h1 class="govuk-heading-xl">{{ t("lived-worked:h1." + editOriginUrl | last) }}</h1>
+
+  {{ casaGovukRadios({
+    name: "outside",
+    items: [
+      {
+        value: "yes",
+        text: t("common:yes")
+      },
+      {
+        value: "no",
+        text: t("common:no")
+      }
+    ],
+    casaValue: formData.outside,
+    classes: "govuk-radios--inline",
+    casaErrors: formErrors
+  }) }}
+{% endblock %}

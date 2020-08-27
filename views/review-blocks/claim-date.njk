@@ -1,0 +1,33 @@
+{% from "components/summary-list/macro.njk" import govukSummaryList %}
+
+{% set data = journeyContext["claim-date"] %}
+
+{% set text = journeyContext["found"].earliestDate if data.acceptEarliestDate === "yes" else data.newClaimDate %}
+
+{% set href = "#f-acceptEarliestDate" if data.acceptEarliestDate === "yes" else "#f-newClaimDate[dd]" %}
+
+{% block reviewBlock %}
+  {{ govukSummaryList({
+    classes: "govuk-!-margin-bottom-0",
+    rows: [
+      {
+        key: {
+          text: t("claim-date:reviewBlock.key")
+        },
+        value: {
+          text: text | formatDateObject
+        },
+        actions: {
+          items: [
+            {
+              href: waypointEditUrl + href,
+              text: t('review:block.changeLink'),
+              visuallyHiddenText: t("claim-date:reviewBlock.key"),
+              classes: 'govuk-link--no-visited-state'
+            }
+          ]
+        }
+      }
+    ]
+  }) }}
+{% endblock %}

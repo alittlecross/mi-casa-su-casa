@@ -1,0 +1,21 @@
+{
+  "serviceName": "Get your State Pension",
+  "yes": "Yes",
+  "no": "No",
+  "form": {
+    "buttons": {
+      "submit": {
+        "label": "Submit"
+      },
+      "cancel": {
+        "label": "Cancel"
+      }
+    }
+  },
+  "links": {
+    "startNewClaim": {
+      "label": "Start a new claim"
+    }
+  }
+}
+  

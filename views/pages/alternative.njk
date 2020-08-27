@@ -1,0 +1,43 @@
+{% extends "layouts/journey.njk" %}
+
+{% from "casa/components/checkboxes/macro.njk" import casaGovukCheckboxes with context %}
+
+{% block casaPageTitle %}
+  {{ t("alternative:pageTitle") }}
+{% endblock %}
+
+{% block journey_form %}
+  <h1 class="govuk-heading-xl">{{ t("alternative:h1") }}</h1>
+
+  {{ casaGovukCheckboxes({
+    name: "alternative",
+    items: [
+      {
+        value: "audioForm",
+        text: t("alternative:fields.alternative.items.audioForm.label")
+      },
+      {
+        value: "audioCD",
+        text: t("alternative:fields.alternative.items.audioCD.label")
+      },
+      {
+        value: "braille",
+        text: t("alternative:fields.alternative.items.braille.label")
+      },
+      {
+        value: "largePrint",
+        text: t("alternative:fields.alternative.items.largePrint.label")
+      },
+      {
+        value: "texBox",
+        text: t("alternative:fields.alternative.items.texBox.label")
+      },
+      {
+        value: "typeTalk",
+        text: t("alternative:fields.alternative.items.typeTalk.label")
+      }
+    ],
+    casaValue: formData.alternative,
+    casaErrors: formErrors
+  }) }}
+{% endblock %}

@@ -1,0 +1,106 @@
+{% extends "layouts/journey.njk" %}
+
+{% from "casa/components/input/macro.njk" import casaGovukInput with context %}
+{% from "casa/components/checkboxes/macro.njk" import casaGovukCheckboxes with context %}
+{% from "casa/components/radios/macro.njk" import casaGovukRadios with context %}
+
+{% set homeHtml %}
+  {{ casaGovukInput({
+    name: "home",
+    value: formData.home,
+    classes: "govuk-!-width-one-third",
+    casaErrors: formErrors
+  }) }}
+{% endset %}
+
+{% set mobileHtml %}
+  {{ casaGovukInput({
+    name: "mobile",
+    value: formData.mobile,
+    classes: "govuk-!-width-one-third",
+    casaErrors: formErrors
+  }) }}
+{% endset %}
+
+{% set workHtml %}
+  {{ casaGovukInput({
+    name: "work",
+    value: formData.work,
+    classes: "govuk-!-width-one-third",
+    casaErrors: formErrors
+  }) }}
+{% endset %}
+
+{% block casaPageTitle %}
+  {{ t("contact-details:pageTitle") }}
+{% endblock %}
+
+{% block journey_form %}
+  <h1 class="govuk-heading-xl">{{ t("contact-details:h1") }}</h1>
+
+  {{ casaGovukCheckboxes({
+    name: "phone",
+    items: [
+      {
+        value: "home",
+        text: t("contact-details:fields.phone.items.home.label"),
+        conditional: {
+          html: homeHtml
+        }
+      },
+      {
+        value: "mobile",
+        text: t("contact-details:fields.phone.items.mobile.label"),
+        conditional: {
+          html: mobileHtml
+        }
+      },
+      {
+        value: "work",
+        text: t("contact-details:fields.phone.items.work.label"),
+        conditional: {
+          html: workHtml
+        }
+      }
+    ],
+    casaValue: formData.phone,
+    casaErrors: formErrors
+  }) }}
+
+  {{ casaGovukInput({
+    label: {
+      text: t("contact-details:fields.email.label"),
+      classes: "govuk-!-font-weight-bold"
+    },
+    name: "email",
+    value: formData.email,
+    casaErrors: formErrors
+  }) }}
+
+  {{ casaGovukRadios({
+    fieldset: {
+      legend: {
+        text: t("contact-details:fields.alternative.label"),
+        isPageHeading: false,
+        classes: "govuk-fieldset__legend--m"
+      }
+    },
+    hint: {
+      text: t("contact-details:fields.alternative.hint")
+    },
+    name: "alternative",
+    items: [
+      {
+        value: "yes",
+        text: t("common:yes")
+      },
+      {
+        value: "no",
+        text: t("common:no")
+      }
+    ],
+    casaValue: formData.alternative,
+    classes: "govuk-radios--inline",
+    casaErrors: formErrors
+  }) }}
+{% endblock %}

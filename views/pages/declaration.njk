@@ -1,0 +1,28 @@
+{% extends "layouts/journey.njk" %}
+
+{% from "casa/components/radios/macro.njk" import casaGovukRadios with context %}
+
+{% block casaPageTitle %}
+  {{ t("declaration:pageTitle") }}
+{% endblock %}
+
+{% block journey_form %}
+  <h1 class="govuk-heading-xl">{{ t("declaration:h1") }}</h1>
+
+  {{ casaGovukRadios({
+    name: "signed",
+    items: [
+      {
+        value: "yes",
+        text: t("common:yes")
+      },
+      {
+        value: "no",
+        text: t("common:no")
+      }
+    ],
+    casaValue: formData.signed,
+    classes: "govuk-radios--inline",
+    casaErrors: formErrors
+  }) }}
+{% endblock %}

@@ -1,0 +1,11 @@
+{
+  "pageTitle": "Declaration",
+  "h1": "Has the citizen signed the form?",
+  "fields": {
+    "signed": {
+      "errors": {
+        "empty": "Please make a selection"
+      }
+    }
+  }
+}

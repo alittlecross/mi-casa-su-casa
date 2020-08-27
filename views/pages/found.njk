@@ -1,0 +1,41 @@
+{% extends "layouts/journey.njk" %}
+
+{% from "components/summary-list/macro.njk" import govukSummaryList %}
+
+{% set a = formData.address %}
+
+{% set html %}
+  {{ a.address1 }}<br>
+  {{ a.address2 }}<br>
+  {{ a.address3 }}<br>
+  {{ a.postcode }}
+{% endset %}
+
+{% block casaPageTitle %}
+  {{ t("found:pageTitle") }}
+{% endblock %}
+
+{% block journey_form %}
+  <h1 class="govuk-heading-xl">{{ t("found:h1") }}</h1>
+
+  {{ govukSummaryList({
+    rows: [
+      {
+        key: {
+          text: t("found:fields.dob.label")
+        },
+        value: {
+          text: formData.dob | formatDateObject
+        }
+      },
+      {
+        key: {
+          text: t("found:fields.address.label")
+        },
+        value: {
+          html: html | upper
+        }
+      }
+    ]
+  }) }}
+{% endblock %}

@@ -1,0 +1,16 @@
+{
+  "pageTitle": "Find someone",
+  "h1": "Find someone",
+  "fields": {
+    "reference": {
+      "label": "National Insurance number or invitation code",
+      "errors": {
+        "empty": "Please enter a National Insurance number or invitation code",
+        "invalid": "Enter a valid National Insurance number or invitation code"
+      }
+    }
+  },
+  "btn": {
+    "label": "Find"
+  }
+}

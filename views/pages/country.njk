@@ -1,0 +1,103 @@
+{% extends "layouts/journey.njk" %}
+
+{% from "../components/country-dates/macro.njk" import countryDates with context %}
+
+{% from "casa/components/input/macro.njk" import casaGovukInput with context %}
+{% from "casa/components/date-input/macro.njk" import casaGovukDateInput with context %}
+{% from "casa/components/radios/macro.njk" import casaGovukRadios with context %}
+
+{% set livedHtml %}
+  {{ countryDates({
+    head: "lived",
+    body: "From"
+  }) }}
+
+  {{ countryDates({
+    head: "lived",
+    body: "To"
+  }) }}
+{% endset %}
+
+{% set workedHtml %}
+  {{ countryDates({
+    head: "worked",
+    body: "From"
+  }) }}
+
+  {{ countryDates({
+    head: "worked",
+    body: "To"
+  }) }}
+
+  {{ casaGovukInput({
+    label: {
+      text: t("country:fields.nino.label"),
+      classes: "govuk-!-font-weight-bold"
+    },
+    name: "nino",
+    value: formData.nino,
+    classes: "govuk-!-width-two-thirds",
+    casaErrors: formErrors
+  }) }}
+{% endset %}
+
+{% block casaPageTitle %}
+  {{ t("country:pageTitle") }}
+{% endblock %}
+
+{% block journey_form %}
+  <h1 class="govuk-heading-xl">{{ t("country:h1") }}</h1>
+
+  {{ casaGovukInput({
+    label: {
+      text: t("country:fields.country.label"),
+      classes: "govuk-!-font-weight-bold"
+    },
+    name: "country",
+    value: formData.country,
+    classes: "govuk-!-width-two-thirds",
+    casaErrors: formErrors
+  }) }}
+
+  <h2 class="govuk-heading-m">{{ t("country:fields.lived.label") }}</h2>
+
+  {{ casaGovukRadios({
+    name: "lived",
+    items: [
+      {
+        value: "yes",
+        text: t("common:yes"),
+        conditional: {
+          html: livedHtml
+        }
+      },
+      {
+        value: "no",
+        text: t("common:no")
+      }
+    ],
+    casaValue: formData.lived,
+    casaErrors: formErrors
+  }) }}
+
+  <h2 class="govuk-heading-m">{{ t("country:fields.worked.label") }}</h2>
+
+  {{ casaGovukRadios({
+    name: "worked",
+    items: [
+      {
+        value: "yes",
+        text: t("common:yes"),
+        conditional: {
+          html: workedHtml
+        }
+      },
+      {
+        value: "no",
+        text: t("common:no")
+      }
+    ],
+    casaValue: formData.worked,
+    casaErrors: formErrors
+  }) }}
+{% endblock %}

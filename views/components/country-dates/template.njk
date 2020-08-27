@@ -1,0 +1,53 @@
+{% from "casa/components/input/macro.njk" import casaGovukInput with context %}
+
+{% if formErrors[params.head + params.body] %}
+  <div class="govuk-form-group govuk-form-group--error">
+{% else %}
+  <div class="govuk-form-group">
+{% endif %}
+
+    <h4 class="govuk-heading-s govuk-!-margin-bottom-0">{{ t("country:fields.dates." + params.body | lower + ".label") }}</h4>
+
+  {% if formErrors[params.head + params.body] %}
+    <span id="country-error" class="govuk-error-message">
+      <span class="govuk-visually-hidden">Error:</span> {{ t("country:fields.dates.errors.invalid") }}
+    </span>
+  {% endif %}
+
+  {% set focusSuffix = formErrors[params.head + params.body][0].focusSuffix %}
+  {% set monthClasses = "govuk-date-input__input govuk-input--width-2" %}
+  {% set yearClasses = "govuk-date-input__input govuk-input--width-4" %}
+
+  {% if includes(focusSuffix, "[mm]") %}
+    {% set monthClasses = monthClasses + " govuk-input--error" %}
+  {% endif %}
+
+  {% if includes(focusSuffix, "[yyyy]") %}
+    {% set yearClasses = yearClasses + " govuk-input--error" %}
+  {% endif %}
+
+    <div id="{{ params.head + params.body }}" class="govuk-date-input">
+      <div class="govuk-date-input__item">
+        {{ casaGovukInput({
+          label: {
+            text: t("country:fields.dates.month.label"),
+            classes: "govuk-date-input__label"
+          },
+          name: params.head + params.body + "[mm]",
+          value: formData[params.head + params.body].mm,
+          classes: monthClasses
+        }) }}
+      </div>
+      <div class="govuk-date-input__item">
+        {{ casaGovukInput({
+          label: {
+            text: t("country:fields.dates.year.label"),
+            classes: "govuk-date-input__label"
+          },
+          name: params.head + params.body + "[yyyy]",
+          value: formData[params.head + params.body].yyyy,
+          classes: yearClasses
+        }) }}
+      </div>
+    </div>
+  </div>

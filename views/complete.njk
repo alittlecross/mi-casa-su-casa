@@ -1,0 +1,16 @@
+{% extends "casa/layouts/main.njk" %}
+
+{% from "components/panel/macro.njk" import govukPanel %}
+
+{% block casaPageTitle %}
+  {{ t("complete:pageTitle") }}
+{% endblock %}
+
+{% block content %}
+  {{ govukPanel({
+    titleText: t("complete:panel.titleText"),
+    html: ""
+  }) }}
+
+  <a class="govuk-link" href="{{ casa.mountUrl }}">{{ t("common:links.startNewClaim.label") }}</a>
+{% endblock %}

@@ -1,0 +1,12 @@
+{
+  "pageTitle": "Paper Claims",
+  "h1": "Paper Claims",
+  "p": "A mockup of the Get your State Pension paper claims service using @dwp/govuk-casa.",
+  "form": {
+    "buttons": {
+      "getStarted": {
+        "label": "Get Started"
+      }
+    }
+  }
+}

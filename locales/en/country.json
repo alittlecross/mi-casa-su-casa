@@ -1,0 +1,48 @@
+{
+  "pageTitle": "Country",
+  "h1": "Country",
+  "fields": {
+    "country": {
+      "label": "Country",
+      "errors": {
+        "empty": "Please enter a country"
+      }
+    },
+    "lived": {
+      "label": "Did they live here?",
+      "errors": {
+        "empty": "Please make a selection"
+      }
+    },
+    "worked": {
+      "label": "Did they work here?",
+      "errors": {
+        "empty": "Please make a selection"
+      }
+    },
+    "dates": {
+      "from": {
+        "label": "From"
+      },
+      "to": {
+        "label": "To"
+      },
+      "month": {
+        "label": "Month"
+      },
+      "year": {
+        "label": "Year"
+      },
+      "errors": {
+        "invalid": "Enter a valid date"
+      }
+    },
+    "nino": {
+      "label": "Social Security or National Insurance number",
+      "errors": {
+        "empty": "Please enter a Social Security or National Insurance number",
+        "invalid": "Enter a valid Social Security or National Insurance number"
+      }
+    }
+  }
+}

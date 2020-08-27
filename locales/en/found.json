@@ -1,0 +1,12 @@
+{
+  "pageTitle": "Confirm details",
+  "h1": "Confirm details",
+  "fields": {
+    "dob": {
+      "label": "Date of birth"
+    },
+    "address": {
+      "label": "Address"
+    }
+  }
+}

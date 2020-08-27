@@ -1,0 +1,71 @@
+{% extends "layouts/journey.njk" %}
+
+{% from "casa/components/date-input/macro.njk" import casaGovukDateInput with context %}
+{% from "casa/components/input/macro.njk" import casaGovukInput with context %}
+
+{% block casaPageTitle %}
+  {{ t("marital-details:pageTitle") }}
+{% endblock %}
+
+{% block journey_form %}
+  <h1 class="govuk-heading-xl">{{ t("marital-details:h1") }}</h1>
+
+  <h3 class="govuk-heading-m">{{ t("marital-details:dateOfMarriage") }}</h3>
+
+  {{ casaGovukDateInput({
+    namePrefix: "dateOfMarriage",
+    casaValue: formData.dateOfMarriage,
+    casaErrors: formErrors
+  }) }}
+
+  <h3 class="govuk-heading-m">{{ t("marital-details:spousesDetails") }}</h3>
+
+  {{ casaGovukInput({
+    label: {
+      text: t("marital-details:fields.nino.label")
+    },
+    name: "nino",
+    value: formData.nino,
+    classes: "govuk-!-width-two-thirds",
+    casaErrors: formErrors
+  }) }}
+
+  {{ casaGovukInput({
+    label: {
+      text: t("marital-details:fields.firstName.label")
+    },
+    name: "firstName",
+    value: formData.firstName,
+    casaErrors: formErrors
+  }) }}
+
+  {{ casaGovukInput({
+    label: {
+      text: t("marital-details:fields.surname.label")
+    },
+    name: "surname",
+    value: formData.surname,
+    casaErrors: formErrors
+  }) }}
+
+  {{ casaGovukInput({
+    label: {
+      text: t("marital-details:fields.anyOtherNames.label")
+    },
+    name: "anyOtherNames",
+    value: formData.anyOtherNames,
+    casaErrors: formErrors
+  }) }}
+
+  {{ casaGovukDateInput({
+    fieldset: {
+      legend: {
+        text: t("marital-details:fields.dob.label"),
+        isPageHeading: false
+      }
+    },
+    namePrefix: "dob",
+    casaValue: formData.dob,
+    casaErrors: formErrors
+  }) }}
+{% endblock %}

@@ -1,0 +1,39 @@
+{% from "components/summary-list/macro.njk" import govukSummaryList %}
+
+{% set data = journeyContext["marital-details"] %}
+
+{% set html %}
+  {{ "Married: " + data.dateOfMarriage | formatDateObject }}<br><br>
+  {{ data.nino }}<br>
+  {{ data.firstName + " " + data.surname }}<br>
+  {% if data.anyOtherNames %}
+    {{ data.anyOtherNames }}<br>
+  {% endif %}
+  {{ data.dob | formatDateObject }}
+{% endset %}
+
+{% block reviewBlock %}
+  {{ govukSummaryList({
+    classes: "govuk-!-margin-bottom-0",
+    rows: [
+      {
+        key: {
+          text: t("marital-details:reviewBlock.key")
+        },
+        value: {
+          html: html
+        },
+        actions: {
+          items: [
+            {
+              href: waypointEditUrl + "#f-dateOfMarriage[dd]",
+              text: t('review:block.changeLink'),
+              visuallyHiddenText: t("marital-details:reviewBlock.key"),
+              classes: 'govuk-link--no-visited-state'
+            }
+          ]
+        }
+      }
+    ]
+  }) }}
+{% endblock %}

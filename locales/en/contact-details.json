@@ -1,0 +1,45 @@
+{
+  "pageTitle": "Contact details",
+  "h1": "Contact details",
+  "fields": {
+    "phone": {
+      "items": {
+        "home": {
+          "label": "Home phone"
+        },
+        "mobile": {
+          "label": "Mobile phone"
+        }, 
+        "work": {
+          "label": "Work phone"
+        }
+      },
+      "errors": {
+        "empty": "Please enter a telephone number",
+        "invalid": "Enter a valid telephone number",
+        "tooLong": "Enter a telephone number in 20 characters or less"
+      }
+    },
+    "email": {
+      "label": "Email address",
+      "errors": {
+        "invalid": "Enter a valid email address"
+      }
+    },
+    "alternative": {
+      "label": "Does the citzen need us to contact them in any other format?",
+      "hint": "For example, audio form, CD, cassette, MP3, braille, large print, TexBox or TypeTalk",
+      "errors": {
+        "empty": "Please make a selection"
+      }
+    }
+  },
+  "reviewBlock": {
+    "key": "Contact details",
+    "values": {
+      "home": "Home",
+      "mobile": "Mobile",
+      "work": "Work"
+    }
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "pageTitle": "Alternative",
+  "h1": "How else would they like to be contacted?",
+  "fields": {
+    "alternative": {
+      "items": {
+        "audioForm": {
+          "label": "Audio form"
+        },
+        "audioCD": {
+          "label": "Audio CD, cassette or MP3"
+        },
+        "braille": {
+          "label": "Braille"
+        },
+        "largePrint": {
+          "label": "Large print"
+        },
+        "texBox": {
+          "label": "TexBox"
+        },
+        "typeTalk": {
+          "label": "TypeTalk"
+        }
+      },
+      "errors": {
+        "empty": "Please select at least one options"
+      }
+    }
+  },
+  "reviewBlock": {
+    "values": {
+      "alternative": "Other formats",
+      "audioForm": "Audio form",
+      "audioCD": "Audio CD, cassette or MP3",
+      "braille": "Braille",
+      "largePrint": "Large print",
+      "texBox": "TexBox",
+      "typeTalk": "TypeTalk"
+    }
+  }
+}

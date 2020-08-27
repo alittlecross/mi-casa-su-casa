@@ -1,0 +1,20 @@
+{% extends "casa/layouts/journey.njk" %}
+
+{% from "components/button/macro.njk" import govukButton %}
+
+{% block casaPageTitle %}
+  {{ t("paper-claims:pageTitle") }}
+{% endblock %}
+
+{% block content %}
+  <h1 class="govuk-heading-xl">{{ t("paper-claims:h1") }}</h1>
+
+  <p class="govuk-body">{{ t("paper-claims:p") }}</p>
+
+  {{ govukButton({
+    text: t("paper-claims:form.buttons.getStarted.label"),
+    href: casa.mountUrl + "find",
+    preventDoubleClick: true,
+    isStartButton: true
+  }) }}
+{% endblock %}

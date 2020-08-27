@@ -1,0 +1,25 @@
+{
+  "pageTitle": "Lived or worked outside the UK",
+  "h1": {
+    "1": "Has the citizen ever lived or worked outside the UK?",
+    "2": "Has the citizen lived or worked anywhere else outside the UK?",
+    "3": "Has the citizen lived or worked anywhere else outside the UK?",
+    "4": "Has the citizen lived or worked anywhere else outside the UK?",
+    "5": "Has the citizen lived or worked in more than 4 countries outside the UK?"
+  },
+  "fields": {
+    "outside": {
+      "errors": {
+        "empty": "Please make a selection"
+      }
+    }
+  },
+  "reviewBlock": {
+    "key": "Lived or worked outside the UK",
+    "values": {
+      "lived": "Lived",
+      "worked": "Worked",
+      "more": "Lived or worked in more than 4 countries"
+    }
+  }
+}

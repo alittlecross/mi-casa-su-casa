@@ -1,0 +1,32 @@
+{
+  "pageTitle": "Bank or building society details",
+  "h1": "Bank or building society details",
+  "fields": {
+    "name": {
+      "label": "Account holder name",
+      "errors": {
+        "empty": "Please enter the account holder name"
+      }
+    },
+    "sortCode": {
+      "label": "Sort code",
+      "errors": {
+        "empty": "Please enter the sort code",
+        "invalid": "Enter a valid sort code"
+      }
+    },
+    "accountNumber": {
+      "label": "Account number",
+      "errors": {
+        "empty": "Please enter the account number",
+        "invalid": "Enter a valid account number"
+      }
+    },
+    "rollOrReference": {
+      "label": "Building society roll or reference number"
+    }
+  },
+  "reviewBlock": {
+    "key": "Bank or building society"
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "pageTitle": "Marital details",
+  "h1": "Marital details",
+  "dateOfMarriage": "Date of marriage",
+  "spousesDetails": "Spouse's details",
+  "fields": {
+    "dateOfMarriage": {
+      "errors": {
+        "empty": "Please enter a date",
+        "invalid": "Enter a valid date"
+      }
+    },
+    "nino": {
+      "label": "National Insurance number",
+      "errors": {
+        "empty": "Please enter a National Insurance number",
+        "invalid": "Enter a valid National Insurance number"
+      }
+    },
+    "firstName": {
+      "label": "First name",
+      "errors": {
+        "empty": "Please enter a first name"
+      }
+    },
+    "surname": {
+      "label": "Surname",
+      "errors": {
+        "empty": "Please enter a surname"
+      }
+    },
+    "anyOtherNames": {
+      "label": "Any other names"
+    },
+    "dob": {
+      "label": "Date of birth",
+      "errors": {
+        "empty": "Please enter a date",
+        "invalid": "Enter a valid date"
+      }
+    }
+  },
+  "reviewBlock": {
+    "key": "Marital details"
+  }
+}

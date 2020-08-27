@@ -1,0 +1,43 @@
+{% extends "layouts/journey.njk" %}
+
+{% from "casa/components/radios/macro.njk" import casaGovukRadios with context %}
+
+{% block casaPageTitle %}
+  {{ t("marital-status:pageTitle") }}
+{% endblock %}
+
+{% block journey_form %}
+  <h1 class="govuk-heading-xl">{{ t("marital-status:h1") }}</h1>
+
+  {{ casaGovukRadios({
+    name: "maritalStatus",
+    items: [
+      {
+        value: "neverBeenMarried",
+        text: t("marital-status:fields.maritalStatus.items.neverBeenMarried.label")
+      },
+      {
+        value: "married",
+        text: t("marital-status:fields.maritalStatus.items.married.label")
+      },
+      {
+        value: "civilPartnership",
+        text: t("marital-status:fields.maritalStatus.items.civilPartnership.label")
+      },
+      {
+        value: "widowed",
+        text: t("marital-status:fields.maritalStatus.items.widowed.label")
+      },
+      {
+        value: "divorced",
+        text: t("marital-status:fields.maritalStatus.items.divorced.label")
+      },
+      {
+        value: "dissolvedCivilPartnership",
+        text: t("marital-status:fields.maritalStatus.items.dissolvedCivilPartnership.label")
+      }
+    ],
+    casaValue: formData.maritalStatus,
+    casaErrors: formErrors
+  }) }}
+{% endblock %}
