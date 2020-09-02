@@ -12,11 +12,13 @@ const page = (name, suffix = '', reviewBlock) => {
       prerender (req, res, next) {
         res.locals.journeyContext = req.casa.journeyContext.data;
         next();
-      }
-    }
+      },
+    },
   };
 
-  if (reviewBlock) pages[name + suffix].reviewBlockView = `review-blocks/${name}.njk`;
+  if (reviewBlock) {
+    pages[name + suffix].reviewBlockView = `review-blocks/${name}.njk`;
+  }
 };
 
 page('find');
@@ -31,7 +33,7 @@ pages.found.hooks = {
   postvalidate (req, res, next) {
     req.casa.journeyContext.setDataForPage('found', req.session.found);
     next();
-  }
+  },
 };
 
 page('contact-details', '', true);
