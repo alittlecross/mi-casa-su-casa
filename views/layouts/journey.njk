@@ -2,7 +2,8 @@
 
 {% from "components/back-link/macro.njk" import govukBackLink %}
 {% from "components/error-summary/macro.njk" import govukErrorSummary %}
-{% from "casa/components/journey-form/macro.njk" import casaJourneyForm with context %}
+
+{% from "../components/casa-journey-form-extra/macro.njk" import casaJourneyFormExtra with context %}
 
 {% set name = journeyContext["found"].name %}
 
@@ -32,20 +33,7 @@
         <br>
       {% endif %}
 
-      {% if formErrorsGovukArray %}
-        {{ govukErrorSummary({
-          titleText: t("error:summary.h1"),
-          descriptionText: errorDescription or t("error:summary.defaultDescription"),
-          errorList: formErrorsGovukArray
-        }) }}
-      {% endif %}
-
-      {% call casaJourneyForm({
-        casaMountUrl: casa.mountUrl,
-        csrfToken: casa.csrfToken,
-        editOriginUrl: editOriginUrl,
-        inEditMode: inEditMode
-      }) %}
+      {% call casaJourneyFormExtra({ buttonBarHidden: false }) %}
         {% block journey_form %}
         {% endblock %}
       {% endcall %}
