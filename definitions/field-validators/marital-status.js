@@ -3,7 +3,7 @@ const { validationRules: r, simpleFieldValidation: v } = require('@dwp/govuk-cas
 module.exports = {
   maritalStatus: v([
     r.required.bind({
-      errorMsg: 'marital-status:fields.maritalStatus.errors.empty'
-    })
-  ])
+      errorMsg: 'marital-status:fields.maritalStatus.errors.empty',
+    }),
+  ]),
 };

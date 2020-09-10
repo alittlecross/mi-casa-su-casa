@@ -3,11 +3,15 @@ const { validationRules: r, simpleFieldValidation: v, ValidationError } = requir
 const validDate = value => {
   const object = {
     summary: 'country:fields.dates.errors.invalid',
-    focusSuffix: []
+    focusSuffix: [],
   };
 
-  if (value.mm && !value.mm.match(/^(0?[1-9]|1[0-2])$/g)) object.focusSuffix.push('[mm]');
-  if (value.yyyy && !value.yyyy.match(/^(19\d\d|20[0-9][0-9]|2100)$/g)) object.focusSuffix.push('[yyyy]');
+  if (value.mm && !value.mm.match(/^(0?[1-9]|1[0-2])$/g)) {
+    object.focusSuffix.push('[mm]');
+  }
+  if (value.yyyy && !value.yyyy.match(/^(19\d\d|20[0-9][0-9]|2100)$/g)) {
+    object.focusSuffix.push('[yyyy]');
+  }
 
   if (object.focusSuffix.length) {
     return Promise.reject(new ValidationError(object));
@@ -19,39 +23,39 @@ const validDate = value => {
 module.exports = {
   country: v([
     r.required.bind({
-      errorMsg: 'country:fields.country.errors.empty'
-    })
+      errorMsg: 'country:fields.country.errors.empty',
+    }),
   ]),
 
   lived: v([
     r.required.bind({
-      errorMsg: 'country:fields.lived.errors.empty'
-    })
+      errorMsg: 'country:fields.lived.errors.empty',
+    }),
   ]),
 
   livedFrom: v([
-    validDate
+    validDate,
   ]),
 
   livedTo: v([
-    validDate
+    validDate,
   ]),
 
   worked: v([
     r.required.bind({
-      errorMsg: 'country:fields.worked.errors.empty'
-    })
+      errorMsg: 'country:fields.worked.errors.empty',
+    }),
   ]),
 
   workedFrom: v([
-    validDate
+    validDate,
   ]),
 
   workedTo: v([
-    validDate
+    validDate,
   ]),
 
   nino: v([
-    r.optional
-  ])
+    r.optional,
+  ]),
 };

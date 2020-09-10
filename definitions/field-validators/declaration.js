@@ -3,7 +3,7 @@ const { validationRules: r, simpleFieldValidation: v } = require('@dwp/govuk-cas
 module.exports = {
   signed: v([
     r.required.bind({
-      errorMsg: 'declaration:fields.signed.errors.empty'
-    })
-  ])
+      errorMsg: 'declaration:fields.signed.errors.empty',
+    }),
+  ]),
 };
