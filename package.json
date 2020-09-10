@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node app.js",
     "start:watch": "nodemon -e 'js, json, njk' --ignore static/  --exec npm run start",
-    "test": "mocha"
+    "test": "nyc --reporter=text mocha test/unit --recursive"
   },
   "repository": {
     "type": "git",
@@ -26,6 +26,7 @@
   "devDependencies": {
     "chai": "^4.2.0",
     "chai-as-promised": "^7.1.1",
-    "mocha": "^8.1.3"
+    "mocha": "^8.1.3",
+    "nyc": "^15.1.0"
   }
 }

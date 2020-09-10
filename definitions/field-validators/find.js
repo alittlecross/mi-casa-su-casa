@@ -5,9 +5,9 @@ const lookup = require('../../services/lookup');
 module.exports = {
   reference: v([
     r.required.bind({
-      errorMsg: 'find:fields.reference.errors.empty'
+      errorMsg: 'find:fields.reference.errors.empty',
     }),
-    function validReference (value, { journeyContext }) {
+    function validReference(value, { journeyContext }) {
       const result = lookup(value);
 
       if (result) {
@@ -16,6 +16,6 @@ module.exports = {
       } else {
         return Promise.reject(new ValidationError('find:fields.reference.errors.invalid'));
       }
-    }
-  ])
+    },
+  ]),
 };

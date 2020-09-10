@@ -9,5 +9,5 @@ module.exports = {
   found: {},
   'lived-worked': require('./lived-worked'),
   'marital-details': require('./marital-details'),
-  'marital-status': require('./marital-status')
+  'marital-status': require('./marital-status'),
 };

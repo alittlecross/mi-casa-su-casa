@@ -5,7 +5,7 @@ chai.use(chaiAsPromised);
 
 const { assert } = require('chai');
 
-const strlenExcluding = require('../lib/strlenExcluding');
+const strlenExcluding = require('../../lib/strlen-excluding');
 
 const config = {
   length: 6,

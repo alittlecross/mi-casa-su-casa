@@ -9,7 +9,7 @@ const page = (name, suffix = '', reviewBlock) => {
     view: `pages/${name}.njk`,
     fieldValidators: fieldValidators[name],
     hooks: {
-      prerender (req, res, next) {
+      prerender(req, res, next) {
         res.locals.journeyContext = req.casa.journeyContext.data;
         next();
       },
@@ -26,11 +26,11 @@ page('found');
 
 pages.found.hooks = {
   ...pages.found.hooks,
-  pregather (req, res, next) {
+  pregather(req, res, next) {
     req.session.found = req.casa.journeyContext.data.found;
     next();
   },
-  postvalidate (req, res, next) {
+  postvalidate(req, res, next) {
     req.casa.journeyContext.setDataForPage('found', req.session.found);
     next();
   },
